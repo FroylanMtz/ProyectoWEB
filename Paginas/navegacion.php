@@ -23,7 +23,7 @@
 
             <!--OPCION DE DASHBOARD-->
             <li>
-                <a href="inicio.php?action=dashboard">
+                <a href="inicio.php?action=dashboard" style="color: #ff4d00;">
                 <i class="fas fa-chart-line"></i> <span>Inicio</span>
                 </a>
             </li> 
@@ -32,7 +32,7 @@
 
             <!--OPCION DE CONSOLAS-->
             <li class="treeview">
-                <a href="#">
+                <a href="#" style="color:#ff00ff;">
                 <i class="fas fa-compact-disc"></i>
                     <span>Consolas</span>
                     <span class="pull-right-container">
@@ -56,7 +56,7 @@
 
             <!-- OPCION DE SOCIOS GAMERS -->
             <li class="treeview">
-                <a href="#">
+                <a href="#" style="color: #00ff88;">
                     <i class="fas fa-users"></i>
                     <span>Socios Gamers</span>
                     <span class="pull-right-container">
@@ -82,7 +82,7 @@
 
             <!-- OPCION DE JUEGOS -->
             <li class="treeview">
-                <a href="#">
+                <a href="#" style="color:#00a2ff;">
                     <i class="fas fa-gamepad"></i>
                     <span>Juegos</span>
                     <span class="pull-right-container">
@@ -108,7 +108,7 @@
 
 
             <li>
-            <a  href="inicio.php?action=salir">
+            <a  href="inicio.php?action=salir" style="color:#9008ff;">
             <i class="fas fa-power-off"></i> <span>Cerrar Sesion</span>
                 
             </a>
