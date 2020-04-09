@@ -135,12 +135,8 @@ $datosPlataformas = $controlador -> obtenerDatosPlataformas();
 
 //Compara si la variable exista, para que cuando entre sin que se le haya pulsado al boton esto no se accione y trate de hacer algo, eso solo se habilitara cuando el usaurio de click en el boton, es lo que significa
 if(isset($_POST['nombre']) ){
-    
     //Funcion del controlador que permite la lecutra de todas las variables del formulario para reunirlas en un objeto y posteriormente pasarlas al modelo apra que la almacene
     $controlador ->  guardarDatosConsola();
-
-    
-
 }
 
 ?>

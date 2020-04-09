@@ -41,7 +41,6 @@ CREATE TABLE juegos_plataformas(
     id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     id_juego INT(11),
     id_plataforma INT(11),
-
     FOREIGN KEY (id_plataforma) REFERENCES plataformas(id) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (id_juego) REFERENCES juegos(id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
@@ -51,7 +50,6 @@ CREATE TABLE juegos_consolas(
     id_consola INT(11),
     id_juego INT(11),
     fecha DATE,
-
     FOREIGN KEY (id_consola) REFERENCES consolas(id) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (id_juego) REFERENCES juegos(id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
@@ -67,7 +65,6 @@ CREATE TABLE torneos(
     cantidad_jugadores INT(3),
     descripcion VARCHAR(255),
     estatus VARCHAR(30),
-
     FOREIGN KEY (id_juego) REFERENCES juegos(id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
@@ -130,3 +127,8 @@ CREATE TABLE usuarios(
 	contrasena char(32) NOT NULL
 );
 
+INSERT INTO plataformas (1, "XBOX ONE");
+INSERT INTO plataformas (2, "PS4");
+INSERT INTO plataformas (3, "NINTENDO SWITCH");
+
+INSERT INTO usuarios( 1, "admin", "administrador", "admin@admin.com", MD5("admin") );
