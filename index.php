@@ -11,7 +11,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title> Rincon del gamer </title>
+  <title> Sistema Web </title>
   <link rel="shortcut icon" type="image/x-icon" href="Public/img/gamepad.png">
 
   <!-- Bootstrap core CSS -->

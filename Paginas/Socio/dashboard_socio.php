@@ -1,51 +1,9 @@
-<?php
 
-
-//Lista de todos los alumnos registrados en la tabla alumnos
-
-//Se crea un objeto de tipo controlador para poder llamar los metodos para traer toda la informacion
-$controlador = new Controlador();
-
-//Se crea un array que va a recibir todos los obejtos 
-$datosAlumnos = array();
-
-//Y se llena ese array con la respuesta con los datos
-$datosAlumnos = $controlador -> obtenerDatosAlumnosPorProfe();
-
-$totalAlumnos = count($datosAlumnos);
-
-//Se crea un array que va a recibir todos los obejtos 
-$datosSesiones = array();
-
-//Y se llena ese array con la respuesta con los datos
-$datosSesiones = $controlador -> obtenerDatosSesiones();
-
-$totalSesiones = count($datosSesiones);
-
-
-//Se crea un array que va a recibir todos los obejtos 
-$datosTemas = array();
-
-//Y se llena ese array con la respuesta con los datos
-$datosTemas = $controlador -> obtenerDatosTemas();
-
-$totalTemas = count($datosTemas);
-
-
-
-$datosTutores = array();
-
-//Se mandan llamar los metodos que traen estos datos, estos retornan un arreglo asociativo, esta informacion sera desplegada en los campos del formulario en donde se necesite mostrar los datos de la tabla que existen
-$datosTutores = $controlador -> obtenerDatosTutores();
-
-$totalTutores = count($datosTutores);
-
-?>
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-    Dashboard de tutor
+    Dashboard de Socio Gamer
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -63,9 +21,9 @@ $totalTutores = count($datosTutores);
         <!-- small box -->
         <div class="small-box bg-aqua">
             <div class="inner">
-                <h3><?= $totalAlumnos ?> </h3>
+                <h3>X</h3>
 
-                <p>Alumnos a cargo</p>
+                <p>X</p>
             </div>
             <div class="icon">
                 <i class="ion ion-person"></i>
@@ -79,9 +37,9 @@ $totalTutores = count($datosTutores);
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3><?= $totalSesiones ?> </h3>
+                <h3>Y</h3>
 
-                <p>Sesiones de tutorias dadas</p>
+                <p>Y</p>
             </div>
 
             <div class="icon">
@@ -96,9 +54,9 @@ $totalTutores = count($datosTutores);
         <!-- small box -->
         <div class="small-box bg-yellow">
             <div class="inner">
-                <h3><?= $totalTemas ?> </h3>
+                <h3>R </h3>
 
-                <p>Temas de tutorias registrados</p>
+                <p>R</p>
             </div>
             <div class="icon">
                 <i class="ion-android-bookmark"></i>
@@ -113,9 +71,9 @@ $totalTutores = count($datosTutores);
         <div class="small-box bg-red">
 
             <div class="inner">
-                <h3><?= $totalTutores ?> </h3>
+                <h3>Q </h3>
 
-                <p>Tutores al servicio de los alumnos</p>
+                <p>Q</p>
             </div>
 
             <div class="icon">

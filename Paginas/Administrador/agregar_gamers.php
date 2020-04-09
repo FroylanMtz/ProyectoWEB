@@ -1,13 +1,5 @@
 <?php
-//Se instancia a un objeto de l clase controlador para que se manden llamar todos los metodo que cominican a la vista con el controlador
 $controlador = new Controlador();
-
-//Se crean dos arreglos para recibir la informacion de las carreras y los tutores
-$datosPlataformas = array();
-
-//Se mandan llamar los metodos que traen estos datos, estos retornan un arreglo asociativo, esta informacion sera desplegada en los campos del formulario en donde se necesite mostrar los datos de la tabla que existen
-$datosPlataformas = $controlador -> obtenerDatosPlataformas();
-
 ?>
 
 <?php
@@ -27,7 +19,7 @@ $datosPlataformas = $controlador -> obtenerDatosPlataformas();
             <script> Swal.fire({
                 icon: 'success',
                 title: 'Guardado con exito',
-                text: 'Consola guardado con exito'
+                text: 'Gamer guardado con exito'
                 }) </script> ";
         }
 
@@ -39,6 +31,17 @@ $datosPlataformas = $controlador -> obtenerDatosPlataformas();
                 text: 'Hubo un erorr al guardar los datos'
                 }) </script> ";
         }
+
+        if($_GET['e'] == 'noCoincideContrasena'){
+            echo " <!-- Sweet alert -->
+            <script> Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No coinciden las contraseñas'
+                }) </script> ";
+        }
+
+        
 
     }
 ?>
@@ -76,25 +79,28 @@ $datosPlataformas = $controlador -> obtenerDatosPlataformas();
                 
                 <div class="box-body">
 
-
-
                 <div class="form-group has-feedback">
+                    <label for="nombre">Nombre: </label>
                     <input type="text" class="form-control" placeholder="Nombre completo" name="nombre">
                 </div>
 
-                <div class="form-group has-feedback">                                             
+                <div class="form-group has-feedback">
+                    <label for="fecha">Fecha de nacimiento: </label>                                           
                     <input type="text" placeholder="Fecha de nacimiento" class="form-control" id="datepicker" name="fecha">
                 </div>
 
                 <div class="form-group has-feedback">
+                    <label for="tag"> Gamer Tag: </label>
                     <input type="text" class="form-control" placeholder="Gamer Tag" name="tag">
                 </div>
 
                 <div class="form-group has-feedback">
+                    <label for="telefono">Telefono: </label>
                     <input type="text" class="form-control" placeholder="Telefono" name="telefono">
                 </div>
 
                 <div class="form-group has-feedback">
+                    <label for="sexo">Sexo: </label>
                     <select class="form-control" placeholder="Sexo" name="sexo"> 
                         <option value="M"> Masculino </option>
                         <option value="F"> Femenino </option>
@@ -102,21 +108,21 @@ $datosPlataformas = $controlador -> obtenerDatosPlataformas();
                 </div>
 
                 <div class="form-group has-feedback">
+                    <label for="correo">Correo: </label>
                     <input type="email" class="form-control" placeholder="Correo Electronico" name="correo">
                 </div>
         
                 <div class="form-group has-feedback">
+                    <label for="contrasena">Contraseña: </label>
                     <input type="password" class="form-control" placeholder="Contraseña" name="contrasena">
                 </div>
 
                 <div class="form-group has-feedback">
+                    <label for="repContrasena">Repetir contrasena: </label>
                     <input type="password" class="form-control" placeholder="Repite contraseña" name="repContrasena">
                 </div>
                 
-
                 </div>
-                <!-- /.box-body -->
-
                 <div class="box-footer">
                 <center> <input type="submit" class="btn btn-primary btn-lg btn-block" value="Guardar datos del socio" /> </center>
                 </div>
@@ -133,10 +139,8 @@ $datosPlataformas = $controlador -> obtenerDatosPlataformas();
 
 <?php
 
-//Compara si la variable exista, para que cuando entre sin que se le haya pulsado al boton esto no se accione y trate de hacer algo, eso solo se habilitara cuando el usaurio de click en el boton, es lo que significa
 if(isset($_POST['nombre']) ){
-    //Funcion del controlador que permite la lecutra de todas las variables del formulario para reunirlas en un objeto y posteriormente pasarlas al modelo apra que la almacene
-    $controlador ->  guardarDatosConsola();
+    $controlador ->  agregarGamer();
 }
 
 ?>
