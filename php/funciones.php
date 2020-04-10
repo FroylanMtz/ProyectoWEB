@@ -316,8 +316,6 @@ class Controlador
 
     
     /*** ADMINISTRACION DE JUEGOS ***/
-
-
     public function guardarDatosJuego(){
         if( empty($_POST['nombreJuego']) || empty($_POST['plataforma']) ){
             echo '<script> 

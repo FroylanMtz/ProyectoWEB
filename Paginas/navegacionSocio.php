@@ -1,8 +1,5 @@
 <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-
-        <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
             <img src="Public/img/user.png" class="img-circle" alt="User Image">
@@ -15,26 +12,18 @@
             </div>
         </div>
 
-        <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-
-            <!--ENCABEZADO-->
             <li class="header"> <center> <strong> SOCIO </strong> </center> </li>
-
-            <!--OPCION DE DASHBOARD-->
             <li>
                 <a href="inicio.php?action=dashboard_socio">
                     <i class="fa fa-th"></i> <span> Inicio </span>
                 </a>
             </li> 
-            
             <li>
             <a  href="inicio.php?action=salir">
             <i class="fas fa-power-off"></i> <span>Cerrar Sesion</span>
-                
             </a>
             </li>
-            
         </ul>
     </section>
 </aside>

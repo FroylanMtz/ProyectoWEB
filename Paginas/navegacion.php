@@ -28,8 +28,6 @@
                 </a>
             </li> 
 
-
-
             <!--OPCION DE CONSOLAS-->
             <li class="treeview">
                 <a href="#" style="color:#ff00ff;">
@@ -63,7 +61,6 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
-
                 <ul class="treeview-menu">
                     <li>
                         <a href="inicio.php?action=gamers">
@@ -79,7 +76,6 @@
                 </ul>
             </li>
 
-
             <!-- OPCION DE JUEGOS -->
             <li class="treeview">
                 <a href="#" style="color:#00a2ff;">
@@ -89,7 +85,6 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
-
                 <ul class="treeview-menu">
                     <li>
                         <a href="inicio.php?action=juegos">
@@ -104,17 +99,36 @@
                     </li>
                 </ul>
             </li>
-
-
-
             <li>
             <a  href="inicio.php?action=salir" style="color:#9008ff;">
             <i class="fas fa-power-off"></i> <span>Cerrar Sesion</span>
-                
             </a>
             </li>
 
-            
+            <!-- OPCION DE SOCIOS GAMERS -->
+            <li class="treeview">
+                <a href="#" style="color: #00ff88;">
+                    <i class="fas fa-users"></i>
+                    <span>Torneos</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="inicio.php?action=torneos">
+                            
+                            <i class="far fa-list-alt"></i> Lista de socios
+                        </a>
+                    </li>
+                    <li active>
+                        <a href="inicio.php?action=agregar_torneos">
+                            <i class="fas fa-plus"></i> Agregar socio
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
         </ul>
     </section>
 </aside>
