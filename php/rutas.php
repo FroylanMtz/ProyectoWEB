@@ -24,7 +24,9 @@ class Modelo
             }
         }else{
             if( $enlace == "dashboard_socio" ||
-                $enlace == "salir" ) {
+                $enlace == "salir" ||
+                $enlace == "torneos_disponibles" ||
+                $enlace == "mis_torneos" ) {
                 $pagina = "Paginas/Socio/". $enlace .".php";
             } else if($enlace == "index"){
                 $pagina = "Paginas/Socio/dashboard_socio.php";

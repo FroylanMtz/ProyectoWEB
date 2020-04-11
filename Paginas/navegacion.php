@@ -99,11 +99,8 @@
                     </li>
                 </ul>
             </li>
-            <li>
-            <a  href="inicio.php?action=salir" style="color:#9008ff;">
-            <i class="fas fa-power-off"></i> <span>Cerrar Sesion</span>
-            </a>
-            </li>
+
+            
 
             <!-- OPCION DE SOCIOS GAMERS -->
             <li class="treeview">
@@ -127,6 +124,12 @@
                         </a>
                     </li>
                 </ul>
+            </li>
+
+            <li>
+            <a  href="inicio.php?action=salir" style="color:#9008ff;">
+            <i class="fas fa-power-off"></i> <span>Cerrar Sesion</span>
+            </a>
             </li>
 
         </ul>

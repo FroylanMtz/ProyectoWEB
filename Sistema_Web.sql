@@ -73,10 +73,38 @@ CREATE TABLE socio_torneo(
     id_torneo INT(11),
     id_socio INT(11),
 
-
     FOREIGN KEY (id_torneo) REFERENCES torneos(id) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (id_socio) REFERENCES socios(id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
+
+CREATE TABLE equipos(
+    id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nombre varchar(100),
+    creador INT(11),
+
+    FOREIGN KEY (creador) REFERENCES socios(id) ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+
+CREATE TABLE equipo_gamers(
+    id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id_equipo int(11),
+    id_socio int(11),
+
+    FOREIGN KEY (id_equipo) REFERENCES equipos(id) ON DELETE RESTRICT ON UPDATE CASCADE,
+    FOREIGN KEY (id_socio) REFERENCES socios(id) ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+
+CREATE TABLE equipo_torneo(
+    id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id_torneo INT(11),
+    id_equipo INT(11),
+
+    FOREIGN KEY (id_torneo) REFERENCES torneos(id) ON DELETE RESTRICT ON UPDATE CASCADE,
+    FOREIGN KEY (id_equipo) REFERENCES equipos(id) ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
 
 CREATE TABLE rentas(
     id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -87,7 +115,6 @@ CREATE TABLE rentas(
     id_socio INT(11),
     numero_horas INT(4),
     tipo_pago VARCHAR(20),
-
     FOREIGN KEY (id_consola) REFERENCES consolas(id) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (id_juego) REFERENCES juegos(id) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (id_socio) REFERENCES socios(id) ON DELETE RESTRICT ON UPDATE CASCADE
@@ -105,7 +132,6 @@ CREATE TABLE renta_accesorios(
     id_renta INT(11),
     id_accesorio INT(11),
     numero_horas DECIMAL(5,2),
-
     FOREIGN KEY (id_accesorio) REFERENCES accesorios(id) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (id_renta) REFERENCES rentas(id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
@@ -132,3 +158,4 @@ INSERT INTO plataformas VALUES (2,'PS4');
 INSERT INTO plataformas VALUES (3,'NINTENDO SWITCH');
 
 INSERT INTO usuarios VALUES(1, "admin", "administrador", "admin@admin.com", MD5("admin") );
+INSERT INTO socios VALUES(1, "gamer prueba", "2020-04-10", "M", '8341609881', 'gamer@gamer.com', MD5('gamer'), 'gamer1', null, 1000);

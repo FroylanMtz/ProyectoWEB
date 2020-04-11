@@ -276,6 +276,50 @@ class Datos extends Conexion{
     }
 
 
+
+    /** ADMINISTRACION DE TORNEOS DEL SOCIO GAMER **/
+    public function traerDatosTorneos() {
+        $stmt = Conexion::conectar()->prepare(" 
+        SELECT *, torneos.titulo as tituloTorneo FROM torneos INNER JOIN juegos ON juegos.id = torneos.id_juego
+        ");
+        $stmt->execute();
+        $r = array();
+        $r = $stmt->FetchAll();
+        return $r;
+    }
+
+
+    public function registrarGamerEnTorneo($datos) {
+        $stmt = Conexion::conectar()->prepare("INSERT INTO socio_torneo(id_torneo, id_socio) VALUES(:id_torneo, :id_socio) ");
+        $stmt->bindParam(":id_torneo", $datos["torneo"] , PDO::PARAM_INT);
+        $stmt->bindParam(":id_socio",  $datos["gamer"], PDO::PARAM_INT);
+        if($stmt->execute()){
+            return "success";
+        }else{
+            return "error";
+        }
+    }
+
+    public function traerDatosTorneosDelGamer() {
+
+        $stmt = Conexion::conectar()->prepare(" 
+            SELECT *, torneos.titulo as tituloTorneo 
+            FROM torneos 
+            INNER JOIN juegos ON juegos.id = torneos.id_juego
+            INNER JOIN socio_torneo ON torneos.id = socio_torneo.id_torneo
+            INNER JOIN socios ON socio_torneo.id_socio = socios.id
+            WHERE socios.id = :id
+        ");
+
+        $stmt->bindParam(":id", $_SESSION['idUsuario'] , PDO::PARAM_INT);
+        $stmt->execute();
+        $r = array();
+        $r = $stmt->FetchAll();
+        return $r;
+
+
+    }
+
 } 
 
 ?>

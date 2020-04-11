@@ -52,10 +52,10 @@ class Controlador
             if( $respuesta ){
                 if( $datos['tipoUsuario'] == 'Administrador' ){
                     $tipoUsuario = $respuesta['rol'];
-                    $idUsuario = $respuesta['usuario_id'];
+                    $idUsuario = $respuesta['id'];
                 }else{
                     $tipoUsuario = 'Socio';
-                    $idUsuario = $respuesta['numero_empleado'];
+                    $idUsuario = $respuesta['id'];
                 }
                 session_start();
                 $_SESSION['iniciada'] = true;
@@ -400,7 +400,38 @@ class Controlador
     }
 
 
+    /* ADMINISTRACION DE TORNEOS DEL SOCIO GAMER */
+    public function obtenerDatosTorneos() {
+        $datosDeTorneos = array();
+        $datosDeTorneos = Datos::traerDatosTorneos();
+        return $datosDeTorneos;
+    }
 
+    
 
+    public function registrarGamerEnTorneo() {
+
+        $datos = array( 'gamer'  =>  $_SESSION['idUsuario'],
+                        'torneo' =>  $_GET['id'] );
+
+        $respuesta = Datos::registrarGamerEnTorneo($datos);
+
+        if($respuesta == "success"){
+            echo '<script>
+                    window.location.href = "inicio.php?action=torneos_disponibles&e=successGuardar";
+                    </script>';
+        }else{
+            echo '<script>
+                    window.location.href = "inicio.php?action=torneos_disponibles&e=errorGuardar";
+                    </script>';
+        }
+
+    }
+
+    public function obtenerDatosTorneosDelGamer() {
+        $datosDeTorneos = array();
+        $datosDeTorneos = Datos::traerDatosTorneosDelGamer();
+        return $datosDeTorneos;
+    }
 
 }
