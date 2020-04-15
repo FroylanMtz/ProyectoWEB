@@ -116,9 +116,7 @@ $datosConsolas = $controlador -> obtenerDatosconsolas();
                             echo '<td>'. $datosConsolas[$i]['serial_consola'] .'</td>';
                             echo '<td>'. $datosConsolas[$i]['costo_renta'] .'</td>';
                             echo '<td>'. $datosConsolas[$i]['total_monedas'] .'</td>';
-                           
                             echo '<td> <a href="inicio.php?action=editar_consola&id='.$datosConsolas[$i]['id'].'" type="button" class="btn btn-warning"> <i class="fas fa-edit"></i> </a> </td>';
-                            
                             echo '<td>  <a href="inicio.php?action=consolas&accion=eliminar_consola&id='.$datosConsolas[$i]['id'].'" type="button"  class="btn btn-danger"> <i class="fas fa-trash-alt"></i>  </a> </td>';
                         echo '</tr>';
                     }

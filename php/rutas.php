@@ -15,8 +15,12 @@ class Modelo
                 $enlace == "juegos" ||
                 $enlace == "agregar_juego" ||
                 $enlace == "editar_juego" || 
-                $enlace == "torneos"){
+                $enlace == "torneos" ||
+                $enlace == "agregar_torneo" ||
+                $enlace == "editar_torneo" ) {
+
                 $pagina = "Paginas/Administrador/". $enlace .".php";
+
             } else if($enlace == "index"){
                 $pagina = "Paginas/Administrador/dashboard.php";
             }else{

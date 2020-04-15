@@ -130,6 +130,19 @@
                     })
                 })
             </script>
+
+            <script>
+                $('#forma').change(function() {
+                    if( $(this).val() == "equipo") {
+                        $('#totalJugadores').prop( "disabled", false );
+                        $('#totalJugadores').val("2");
+                    } else {       
+                        $('#totalJugadores').prop( "disabled", true );
+                        $('#totalJugadores').val("1");
+                    }
+                });
+            </script>
+
         </div>
     </body>
 </html>

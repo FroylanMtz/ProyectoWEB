@@ -115,12 +115,12 @@
                     <li>
                         <a href="inicio.php?action=torneos">
                             
-                            <i class="far fa-list-alt"></i> Lista de socios
+                            <i class="far fa-list-alt"></i> Lista de torneos
                         </a>
                     </li>
                     <li active>
-                        <a href="inicio.php?action=agregar_torneos">
-                            <i class="fas fa-plus"></i> Agregar socio
+                        <a href="inicio.php?action=agregar_torneo">
+                            <i class="fas fa-plus"></i> Agregar torneo
                         </a>
                     </li>
                 </ul>

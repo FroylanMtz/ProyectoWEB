@@ -1,16 +1,7 @@
 <?php
-
-//Lista de todos los alumnos registrados en la tabla alumnos
-
-//Se crea un objeto de tipo controlador para poder llamar los metodos para traer toda la informacion
 $controlador = new Controlador();
-
-//Se crea un array que va a recibir todos los obejtos 
-$datosConsolas = array();
-
-//Y se llena ese array con la respuesta con los datos
-$datosConsolas = $controlador -> obtenerDatosconsolas();
-
+$datosTorneos = array();
+$datosTorneos = $controlador -> obtenerDatosTorneos();
 
 ?>
 
@@ -64,6 +55,25 @@ $datosConsolas = $controlador -> obtenerDatosconsolas();
         }
 
 
+        if($_GET['e'] == 'successGuardar'){
+            echo " <!-- Sweet alert -->
+            <script> Swal.fire({
+                icon: 'success',
+                title: 'Registrado al torneo',
+                text: 'Registrado correctamente al torneo'
+                }) </script> ";
+        }
+
+        if($_GET['e'] == 'errorGuardar'){
+            echo " <!-- Sweet alert -->
+            <script> Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo registrar al torneo'
+                }) </script> ";
+        }
+
+
 
     }
 ?>
@@ -71,12 +81,12 @@ $datosConsolas = $controlador -> obtenerDatosconsolas();
 
 <section class="content-header">
     <h1>
-        Torneos registradas en el sistema
+        Torneos registrados en el sistema
     </h1>
     
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Consolas </a></li>
-        <li class="active"> Lista de Consolas </li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Torneos </a></li>
+        <li class="active"> Lista de torneos </li>
     </ol>
 
 </section>
@@ -89,37 +99,45 @@ $datosConsolas = $controlador -> obtenerDatosconsolas();
 
 <div class="box">
 
-
-
     <!-- /.box-header -->
     <div class="box-body">
         <table id="tabla" class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <!--Columnas de la cabecera de la tabla-->
-                    <th>Plataforma</th>
-                    <th>Numero</th>
-                    <th>Serial</th>
-                    <th>Costo renta</th>
-                    <th>Total monedas</th>
-                    <th>Modificar</th>
+                    <th>Titulo</th>
+                    <th>Juego</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Modalidad</th>
+                    <th>Forma</th>
+                    <th>Total de jugadores</th>
+                    <th>Descripcion</th>
+                    <th>Estatus</th>
+                    <th>Editar</th>
                     <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                     //La tabla es llenada dinamicamente creando una nueva fila por cada registro en la tabla, toda la ifnormacion que aqui se despliega se trajo desde el controler con el metodo anteriormente definido
-                    for($i=0; $i < count($datosConsolas); $i++ ){
+                    for($i=0; $i < count($datosTorneos); $i++ ){
                         echo '<tr>';
-                            echo '<td>'. $datosConsolas[$i]['nombre_plataforma'] .'</td>';
-                            echo '<td>'. $datosConsolas[$i]['numero'] .'</td>';
-                            echo '<td>'. $datosConsolas[$i]['serial_consola'] .'</td>';
-                            echo '<td>'. $datosConsolas[$i]['costo_renta'] .'</td>';
-                            echo '<td>'. $datosConsolas[$i]['total_monedas'] .'</td>';
-                           
-                            echo '<td> <a href="inicio.php?action=editar_consola&id='.$datosConsolas[$i]['id'].'" type="button" class="btn btn-warning"> <i class="fas fa-edit"></i> </a> </td>';
+                            echo '<td>'. $datosTorneos[$i]['tituloTorneo'] .'</td>';
+                            echo '<td>'. $datosTorneos[$i]['titulo'] .'</td>';
+                            echo '<td>'. $datosTorneos[$i]['fecha'] .'</td>';
+                            echo '<td>'. $datosTorneos[$i]['hora'] .'</td>';
+                            echo '<td>'. $datosTorneos[$i]['modalidad'] .'</td>';
+                            echo '<td>'. $datosTorneos[$i]['forma'] .'</td>';
+                            echo '<td>'. $datosTorneos[$i]['cantidad_jugadores'] .'</td>';
+                            echo '<td>'. $datosTorneos[$i]['descripcion'] .'</td>';
+                            echo '<td>'. $datosTorneos[$i]['estatus'] .'</td>';
+
+                            echo '<td> <a href="inicio.php?action=editar_torneo&id='.$datosTorneos[$i][0].'" type="button" class="btn btn-warning"> <i class="fas fa-edit"></i> </a> </td>';
+                            echo '<td>  <a href="inicio.php?action=torneos&accion=eliminar_torneo&id='.$datosTorneos[$i][0].'" type="button"  class="btn btn-danger"> <i class="fas fa-trash-alt"></i>  </a> </td>';
+
+
                             
-                            echo '<td>  <a href="inicio.php?action=consolas&accion=eliminar_consola&id='.$datosConsolas[$i]['id'].'" type="button"  class="btn btn-danger"> <i class="fas fa-trash-alt"></i>  </a> </td>';
                         echo '</tr>';
                     }
                 
@@ -128,19 +146,13 @@ $datosConsolas = $controlador -> obtenerDatosconsolas();
         </table>
     </div>
 </div>
-
-    
-
 </section>
 
 
 <?php
-
-//Valida que se accion el metodo solo si se hace clic en el boton y no cuando se cargue pagina
 if(isset($_GET['accion'])) {
-    if( $_GET['accion'] == "eliminar_consola"){
-        $controlador -> eliminarConsola();
+    if( $_GET['accion'] == "eliminar_torneo"){
+        $controlador -> eliminarTorneo();
     }
 }
-
 ?>

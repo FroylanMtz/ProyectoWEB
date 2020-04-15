@@ -273,6 +273,7 @@ class Datos extends Conexion{
         }else{
             return "error";
         }
+
     }
 
 
@@ -320,6 +321,86 @@ class Datos extends Conexion{
 
     }
 
+
+    /* ADMINISTRAR TORNEOS DEL ADMINISTRADOR */
+    public function guardarDatosTorneo($datosTorneo, $tabla) {
+
+        //$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(titulo) VALUES(:titulo) ");
+
+        $stmt = Conexion::conectar()->prepare("
+            INSERT INTO torneos(titulo, id_juego, fecha, hora, modalidad, forma, cantidad_jugadores, descripcion, estatus) VALUES (:titulo ,:id_juego, :fecha, :hora, :modalidad, :forma, :cantidad_jugadores, :descripcion, :estatus);
+        ");
+
+        $stmt->bindParam(":titulo", $datosTorneo["titulo"], PDO::PARAM_STR);
+        $stmt->bindParam(":id_juego", $datosTorneo["juego"], PDO::PARAM_INT);
+        $stmt->bindParam(":fecha", $datosTorneo["fechaTorneo"], PDO::PARAM_STR);
+        $stmt->bindParam(":hora", $datosTorneo["horaTorneo"], PDO::PARAM_STR);
+        $stmt->bindParam(":modalidad", $datosTorneo["modalidad"], PDO::PARAM_STR);
+        $stmt->bindParam(":forma", $datosTorneo["forma"], PDO::PARAM_STR);
+        $stmt->bindParam(":cantidad_jugadores", $datosTorneo["totalJugadores"], PDO::PARAM_INT);
+        $stmt->bindParam(":descripcion", $datosTorneo["descripcion"], PDO::PARAM_STR);
+        $stmt->bindParam(":estatus", $datosTorneo["estatus"], PDO::PARAM_STR);
+
+        if($stmt->execute()){
+            return "success";
+        }else{
+            return "error";
+        }
+
+    }
+
+    public function traerDatosTorneo($id) {
+
+        $stmt = Conexion::conectar()->prepare(" 
+        SELECT *, torneos.titulo as tituloTorneo FROM torneos INNER JOIN juegos ON juegos.id = torneos.id_juego WHERE torneos.id = :id;
+        ");
+
+
+        $stmt->bindParam(":id", $id , PDO::PARAM_INT);
+        $stmt->execute();
+        $r = array();
+        $r = $stmt->FetchAll();
+        return $r;
+
+    }
+
+    public function editarDatosTorneo($datosTorneo) {
+
+        $stmt = Conexion::conectar()->prepare("UPDATE torneos 
+                                               SET titulo = :titulo, id_juego = :id_juego, fecha = :fecha, hora = :hora, modalidad = :modalidad, forma = :forma, cantidad_jugadores = :cantidad_jugadores, descripcion = :descripcion
+                                               WHERE id = :id ");
+        
+        $stmt->bindParam(":titulo", $datosTorneo["titulo"], PDO::PARAM_STR);
+        $stmt->bindParam(":id_juego", $datosTorneo["juego"], PDO::PARAM_INT);
+        $stmt->bindParam(":fecha", $datosTorneo["fechaTorneo"], PDO::PARAM_STR);
+        $stmt->bindParam(":hora", $datosTorneo["horaTorneo"], PDO::PARAM_STR);
+        $stmt->bindParam(":modalidad", $datosTorneo["modalidad"], PDO::PARAM_STR);
+        $stmt->bindParam(":forma", $datosTorneo["forma"], PDO::PARAM_STR);
+        $stmt->bindParam(":cantidad_jugadores", $datosTorneo["totalJugadores"], PDO::PARAM_INT);
+        $stmt->bindParam(":descripcion", $datosTorneo["descripcion"], PDO::PARAM_STR);
+        $stmt->bindParam(":id", $datosTorneo["id"], PDO::PARAM_INT);
+
+        if($stmt->execute()){
+            return "success";
+        }else{
+            return "error";
+        }
+
+
+    }
+
+
+    public function eliminarDatosTorneo() {
+
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id ");
+        $stmt->bindParam(":id", $id , PDO::PARAM_INT);
+        if($stmt->execute() ){
+            return "success";
+        }else{
+            return "error";
+        }
+
+    }
 } 
 
 ?>

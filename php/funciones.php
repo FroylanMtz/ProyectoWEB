@@ -434,4 +434,125 @@ class Controlador
         return $datosDeTorneos;
     }
 
+
+
+
+    /*  ADMINISTRACION DE TORNEOS DEL ADMINISTRADOR  */
+
+    public function guardarDatosTorneo() {
+
+        if( empty($_POST['descripcion']) || empty($_POST['tituloTorneo']) || empty($_POST['juego']) || empty($_POST['fecha']) || empty($_POST['hora']) || empty($_POST['modalidad']) || empty($_POST['forma'])   ){
+            echo '<script> 
+                    window.location.href = "inicio.php?action=agregar_torneo&e=camposVacios";
+                  </script>';
+        }else{
+            $titulo = $_POST['tituloTorneo'];
+            $juego = $_POST['juego'];
+            $fechaTorneo = $_POST['fecha'];
+            $horaTorneo = $_POST['hora'];
+            $modalidad = $_POST['modalidad'];
+            $forma = $_POST['forma'];
+            $totalJugadores = $_POST['totalJugadores'];
+            $descripcion = $_POST['descripcion'];
+            
+            $datosTorneo = array('titulo' => $titulo,
+                                'juego' => $juego,
+                                'fechaTorneo' => $fechaTorneo, 
+                                'horaTorneo' => $horaTorneo, 
+                                'modalidad' => $modalidad,
+                                'forma' => $forma,
+                                'totalJugadores' => $totalJugadores,
+                                'descripcion' => $descripcion,
+                                "estatus" => "Registro");
+
+            
+            $respuesta = Datos::guardarDatosTorneo($datosTorneo, "torneos");
+
+            
+            if($respuesta == "success"){
+                echo '<script>
+                        window.location.href = "inicio.php?action=torneos&e=successGuardar";
+                      </script>';
+            }else{
+                echo '<script>
+                        window.location.href = "inicio.php?action=torneos&e=errorGuardar";
+                      </script>';
+            }
+        }
+
+    }
+
+
+    public function obtenerDatosTorneo() {
+        $idTorneo = $_GET['id'];
+        $datosDeTorneo = array();
+        $datosDeTorneo = Datos::traerDatosTorneo($idTorneo);
+        return $datosDeTorneo;
+    }
+
+    public function editarDatosTorneo() {
+        
+        if( empty($_POST['descripcion']) || empty($_POST['tituloTorneo']) || empty($_POST['juego']) || empty($_POST['fecha']) || empty($_POST['hora']) || empty($_POST['modalidad']) || empty($_POST['forma'])   ){
+            echo '<script> 
+                    window.location.href = "inicio.php?action=torneos&e=camposVacios";
+                  </script>';
+        }else{
+            $titulo = $_POST['tituloTorneo'];
+            $juego = $_POST['juego'];
+            $fechaTorneo = $_POST['fecha'];
+            $horaTorneo = $_POST['hora'];
+            $modalidad = $_POST['modalidad'];
+            $forma = $_POST['forma'];
+            $totalJugadores = $_POST['totalJugadores'];
+            $descripcion = $_POST['descripcion'];
+            
+            $datosTorneo = array('titulo' => $titulo,
+                                'juego' => $juego,
+                                'fechaTorneo' => $fechaTorneo, 
+                                'horaTorneo' => $horaTorneo, 
+                                'modalidad' => $modalidad,
+                                'forma' => $forma,
+                                'totalJugadores' => $totalJugadores,
+                                'descripcion' => $descripcion,
+                                "estatus" => "Registro",
+                                "id" => $_GET['id']);
+
+            
+            $respuesta = Datos::editarDatosTorneo($datosTorneo);
+
+            
+            if($respuesta == "success"){
+                echo '<script>
+                        window.location.href = "inicio.php?action=torneos&e=successEditar";
+                      </script>';
+            }else{
+                echo '<script>
+                        window.location.href = "inicio.php?action=torneos&e=errorEditar";
+                      </script>';
+            }
+        }
+
+
+    }
+
+
+    public function eliminarTorneo() {
+
+        $idTorneo = $_GET['id'];
+        $respuesta = Datos::eliminarDatosTorneo($idTorneo, "torneos");        
+
+        if($respuesta == "success"){
+            echo '<script> 
+                    window.location.href = "inicio.php?action=torneos&e=successEliminar";
+                  </script>';
+        }else{
+            echo '<script> 
+                    window.location.href = "inicio.php?action=torneos&e=errorEliminar";
+                  </script>';
+        }
+
+    }
+
+
+
 }
